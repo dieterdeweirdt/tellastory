@@ -41,7 +41,7 @@ restService.post("/story", function(req, res) {
     //Speech Synthesis Markup Language //https://www.w3.org/TR/speech-synthesis/#S3.2.3
     case "test":
       speech =
-        '<speak>This is a test <audio src="http://www.music.helsinki.fi/tmt/opetus/uusmedia/esim/a2002011001-e02-96k.ogg">did not get your audio file</audio></speak>';
+        '<speak>This is a test <audio src="http://www.music.helsinki.fi/tmt/opetus/uusmedia/esim/a2002011001-e02-96k.ogg"></audio></speak>';
       break;
     case "me":
       speech =
@@ -57,7 +57,7 @@ restService.post("/story", function(req, res) {
       break;
     case "kids":
       speech =
-        '<speak><audio src="http://www.music.helsinki.fi/tmt/opetus/uusmedia/esim/a2002011001-e02-96k.ogg">did not get your audio file</audio> Hi kids, i will tell a story</speak>';
+        '<speak><audio src="http://www.music.helsinki.fi/tmt/opetus/uusmedia/esim/a2002011001-e02-96k.ogg"></audio> Hi kids, i will tell a story</speak>';
       break; 
   }
   return res.json({
