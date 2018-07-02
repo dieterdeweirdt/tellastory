@@ -35,7 +35,7 @@ restService.post("/story", function(req, res) {
   var speech = "";
 
   var audience = (req && req.body && req.body.result && req.body.result.parameters && req.body.result.parameters.Audience) ?
-    req.body.result.parameters.Audience.toLowerCase() : test;
+    req.body.result.parameters.Audience.toLowerCase() : 'test';
 
   switch (audience) {
     //Speech Synthesis Markup Language 
