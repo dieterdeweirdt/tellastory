@@ -1,0 +1,6 @@
+{
+  "name": "Tell-a-story",
+  "description": "Tell a story webhook",
+  "repository": "https://github.com/dieterdeweirdt/tellastory.git",
+  "keywords": ["api.ai", "dialogflow", "natural language"]
+}
