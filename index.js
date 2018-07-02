@@ -37,10 +37,10 @@ restService.post("/story", function(req, res) {
   var audience = (req && req.body && req.body.queryResult && req.body.queryResult.parameters && req.body.queryResult.parameters.Audience) ?
     req.body.queryResult.parameters.Audience.toLowerCase() : 'test';
 
-    var gender = (req && req.body && req.body.queryResult && req.body.queryResult.parameters && req.body.queryResult.parameters.Audience) ?
+    var gender = (req && req.body && req.body.queryResult && req.body.queryResult.parameters && req.body.queryResult.parameters.Gender) ?
     req.body.queryResult.parameters.Gender.toLowerCase() : '';
 
-  var about = (gender) ? 'about a ' + gender : '';
+  var about = (gender) ? ' about a ' + gender : '';
 
   switch (audience) {
     //Speech Synthesis Markup Language //https://www.w3.org/TR/speech-synthesis/#S3.2.3
