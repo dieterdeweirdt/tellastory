@@ -39,18 +39,13 @@ restService.post("/story", function(req, res) {
   var location = "";
 
   if(req && req.body && req.body.queryResult && req.body.queryResult.parameters) {
-    var params = req && req.body && req.body.queryResult && req.body.queryResult.parameters;
-
+    var params = req.body.queryResult.parameters;
     var audience = (params.Audience) ? params.Audience.toLowerCase() : 'any';
-    var gender = (params.Gender) ? params.Gender.toLowerCase() : '';
-    var about = (gender) ? ' about a ' + gender : '';
+    var about = (params.Gender) ? ' about a ' + params.Gender.toLowerCase() : '';
     var typeOfStory = (params.TypeOfStory) ? params.toLowerCase() : 'story';
     var location = (params.City) ? ' located near ' + params.City.toLowerCase() : '';
-
   }
   
-
-
   switch (audience) {
     //Speech Synthesis Markup Language //https://www.w3.org/TR/speech-synthesis/#S3.2.3
     case "me":
