@@ -34,7 +34,7 @@ restService.post("/test", function(req, res) {
 restService.post("/story", function(req, res) {
   var speech = "";
   var audience = "any";
-  var gender = "";
+  var about = "";
   var typeOfStory = "story";
   var location = "";
 
