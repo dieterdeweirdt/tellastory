@@ -27,7 +27,7 @@ restService.post("/echo", function(req, res) {
   });
 });
 
-restService.post("/audio", function(req, res) {
+restService.post("/story", function(req, res) {
   var speech = "";
   switch (req.body.result.parameters.AudioSample.toLowerCase()) {
     //Speech Synthesis Markup Language 
@@ -35,9 +35,21 @@ restService.post("/audio", function(req, res) {
       speech =
         '<speak><audio src="https://actions.google.com/sounds/v1/cartoon/slide_whistle.ogg">did not get your audio file</audio></speak>';
       break;
-    case "delay":
+    case "me":
       speech =
-        '<speak>Let me tell you a family table story</speak>';
+        '<speak>Let me tell a story only for you</speak>';
+      break;
+    case "us":
+      speech =
+        '<speak>Let me tell a story</speak>';
+      break;
+    case "family":
+      speech =
+        '<speak>Let me tell a family story</speak>';
+      break;
+    case "kids":
+      speech =
+        '<speak><audio src="https://actions.google.com/sounds/v1/cartoon/slide_whistle.ogg">did not get your audio file</audio> Hi kids, i will tell a story</speak>';
       break;
     //https://www.w3.org/TR/speech-synthesis/#S3.2.3
   }
