@@ -33,39 +33,45 @@ restService.post("/test", function(req, res) {
 
 restService.post("/story", function(req, res) {
   var speech = "";
+  var audience = "any";
+  var gender = "";
+  var typeOfStory = "story";
+  var location = "";
 
-  var audience = (req && req.body && req.body.queryResult && req.body.queryResult.parameters && req.body.queryResult.parameters.Audience) ?
-    req.body.queryResult.parameters.Audience.toLowerCase() : 'test';
+  if(req && req.body && req.body.queryResult && req.body.queryResult.parameters) {
+    var params = req && req.body && req.body.queryResult && req.body.queryResult.parameters;
 
-  var gender = (req && req.body && req.body.queryResult && req.body.queryResult.parameters && req.body.queryResult.parameters.Gender) ?
-    req.body.queryResult.parameters.Gender.toLowerCase() : '';
+    var audience = (params.Audience) ? params.Audience.toLowerCase() : 'any';
+    var gender = (params.Gender) ? params.Gender.toLowerCase() : '';
+    var about = (gender) ? ' about a ' + gender : '';
+    var typeOfStory = (params.TypeOfStory) ? params.toLowerCase() : 'story';
+    var location = (params.City) ? ' located near ' + params.City.toLowerCase() : '';
 
-  var typeOfStory = (req && req.body && req.body.queryResult && req.body.queryResult.parameters && req.body.queryResult.parameters.TypeOfStory) ?
-    req.body.queryResult.parameters.TypeOfStory.toLowerCase() : 'story';
+  }
+  
 
-  var about = (gender) ? ' about a ' + gender : '';
 
   switch (audience) {
     //Speech Synthesis Markup Language //https://www.w3.org/TR/speech-synthesis/#S3.2.3
-    case "test":
-      speech =
-        '<speak>This is a test <audio src="http://www.music.helsinki.fi/tmt/opetus/uusmedia/esim/a2002011001-e02-96k.ogg"></audio></speak>';
-      break;
     case "me":
       speech =
-        '<speak>Let me tell a ' + typeOfStory + ' only for you' + about + '</speak>';
+        '<speak>Let me tell a ' + typeOfStory + ' only for you' + about + location + '</speak>';
       break;
     case "us":
       speech =
-        '<speak>Let me tell a ' + typeOfStory + ' to a group' + about + '</speak>';
+        '<speak>Hi you all, Let me tell a ' + typeOfStory  + about + location + '</speak>';
       break;
     case "family":
       speech =
-        '<speak>Let me tell a family ' + typeOfStory + '' + about + '</speak>';
+        '<speak>Hi family, let me tell a ' + typeOfStory + about + location + '</speak>';
       break;
     case "kids":
       speech =
-        '<speak><audio src="http://www.music.helsinki.fi/tmt/opetus/uusmedia/esim/a2002011001-e02-96k.ogg"></audio> Hi kids, i will tell a ' + typeOfStory + '' + about + '</speak>';
+        '<speak><audio src="http://www.music.helsinki.fi/tmt/opetus/uusmedia/esim/a2002011001-e02-96k.ogg"></audio> Hi kids, i will tell a ' + typeOfStory + '' + about + location + '</speak>';
+      break; 
+    case "any":
+      speech =
+        '<speak>Hi any, i will tell a ' + typeOfStory + '' + about + location + '</speak>';
       break; 
   }
   return res.json({
