@@ -28,16 +28,20 @@ restService.post("/echo", function(req, res) {
 });
 
 restService.post("/test", function() {
-  return 'test'
+  return res.json({speech: 'test'});
 });
 
 restService.post("/story", function(req, res) {
   var speech = "";
-  switch (req.body.result.parameters.Audience.toLowerCase()) {
+
+  var audience = (req && req.body && req.body.result && req.body.result.parameters && req.body.result.parameters.Audience) ?
+    req.body.result.parameters.Audience.toLowerCase() : test;
+
+  switch (audience) {
     //Speech Synthesis Markup Language 
     case "test":
       speech =
-        '<speak><audio src="https://actions.google.com/sounds/v1/cartoon/slide_whistle.ogg">did not get your audio file</audio></speak>';
+        '<speak>This is a test <audio src="https://actions.google.com/sounds/v1/cartoon/slide_whistle.ogg">did not get your audio file</audio></speak>';
       break;
     case "me":
       speech =
