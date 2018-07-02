@@ -27,6 +27,10 @@ restService.post("/echo", function(req, res) {
   });
 });
 
+restService.post("/test", function() {
+  return 'test'
+});
+
 restService.post("/story", function(req, res) {
   var speech = "";
   switch (req.body.result.parameters.Audience.toLowerCase()) {
