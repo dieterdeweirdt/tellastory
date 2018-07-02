@@ -37,6 +37,11 @@ restService.post("/story", function(req, res) {
   var audience = (req && req.body && req.body.queryResult && req.body.queryResult.parameters && req.body.queryResult.parameters.Audience) ?
     req.body.queryResult.parameters.Audience.toLowerCase() : 'test';
 
+    var gender = (req && req.body && req.body.queryResult && req.body.queryResult.parameters && req.body.queryResult.parameters.Audience) ?
+    req.body.queryResult.parameters.Gender.toLowerCase() : '';
+
+  var about = (gender) ? 'about a ' + gender : '';
+
   switch (audience) {
     //Speech Synthesis Markup Language //https://www.w3.org/TR/speech-synthesis/#S3.2.3
     case "test":
@@ -45,19 +50,19 @@ restService.post("/story", function(req, res) {
       break;
     case "me":
       speech =
-        '<speak>Let me tell a story only for you</speak>';
+        '<speak>Let me tell a story only for you' + about + '</speak>';
       break;
     case "us":
       speech =
-        '<speak>Let me tell a story</speak>';
+        '<speak>Let me tell a story' + about + '</speak>';
       break;
     case "family":
       speech =
-        '<speak>Let me tell a family story</speak>';
+        '<speak>Let me tell a family story' + about + '</speak>';
       break;
     case "kids":
       speech =
-        '<speak><audio src="http://www.music.helsinki.fi/tmt/opetus/uusmedia/esim/a2002011001-e02-96k.ogg"></audio> Hi kids, i will tell a story</speak>';
+        '<speak><audio src="http://www.music.helsinki.fi/tmt/opetus/uusmedia/esim/a2002011001-e02-96k.ogg"></audio> Hi kids, i will tell a story' + about + '</speak>';
       break; 
   }
   return res.json({
