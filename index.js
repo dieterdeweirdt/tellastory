@@ -27,7 +27,7 @@ restService.post("/echo", function(req, res) {
   });
 });
 
-restService.post("/test", function() {
+restService.post("/test", function(req, res) {
   return res.json({speech: 'test'});
 });
 
