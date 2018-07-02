@@ -54,7 +54,7 @@ restService.post("/story", function(req, res) {
       break;
     case "us":
       speech =
-        '<speak>Let me tell a story' + about + '</speak>';
+        '<speak>Let me tell a story to a group' + about + '</speak>';
       break;
     case "family":
       speech =
