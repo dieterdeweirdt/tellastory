@@ -34,11 +34,11 @@ restService.post("/test", function(req, res) {
 restService.post("/story", function(req, res) {
   var speech = "";
 
-  var audience = (req && req.body && req.body.result && req.body.result.parameters && req.body.result.parameters.Audience) ?
-    req.body.result.parameters.Audience.toLowerCase() : 'test';
+  var audience = (req && req.body && req.body.queryResult && req.body.queryResult.parameters && req.body.queryResult.parameters.Audience) ?
+    req.body.queryResult.parameters.Audience.toLowerCase() : 'test';
 
   switch (audience) {
-    //Speech Synthesis Markup Language 
+    //Speech Synthesis Markup Language //https://www.w3.org/TR/speech-synthesis/#S3.2.3
     case "test":
       speech =
         '<speak>This is a test <audio src="https://actions.google.com/sounds/v1/cartoon/slide_whistle.ogg">did not get your audio file</audio></speak>';
@@ -58,8 +58,7 @@ restService.post("/story", function(req, res) {
     case "kids":
       speech =
         '<speak><audio src="https://actions.google.com/sounds/v1/cartoon/slide_whistle.ogg">did not get your audio file</audio> Hi kids, i will tell a story</speak>';
-      break;
-    //https://www.w3.org/TR/speech-synthesis/#S3.2.3
+      break; 
   }
   return res.json({
     speech: speech,
