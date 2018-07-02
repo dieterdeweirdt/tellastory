@@ -42,7 +42,7 @@ restService.post("/story", function(req, res) {
     var params = req.body.queryResult.parameters;
     var audience = (params.Audience) ? params.Audience.toLowerCase() : 'any';
     var about = (params.Gender) ? ' about a ' + params.Gender.toLowerCase() : '';
-    var typeOfStory = (params.TypeOfStory) ? params.toLowerCase() : 'story';
+    var typeOfStory = (params.TypeOfStory) ? params.TypeOfStory.toLowerCase() : 'story';
     var location = (params.City) ? ' located near ' + params.City.toLowerCase() : '';
   }
   
