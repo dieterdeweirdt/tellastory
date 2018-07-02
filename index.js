@@ -61,8 +61,7 @@ restService.post("/story", function(req, res) {
       break; 
   }
   return res.json({
-    speech: speech,
-    displayText: speech,
+    fulfillmentText: speech,
     source: "tell-a-story"
   });
 });
