@@ -50,30 +50,30 @@ restService.post("/story", function(req, res) {
   
   var number_of_stories = audio_list.length;
   var x = Math.floor((Math.random() * number_of_stories));
-
-  var audio = ' <break time="500ms"/> told by ' + audio_list[x]['name'] + ' <break time="1s"/> <audio src="' + audio_list[x]['src'] +'">Audio failed to load</audio>';
+  var name = audio_list[x]['name'];
+  var audio = ' <break time="1s"/> <audio src="' + audio_list[x]['src'] +'">Audio failed to load</audio>';
 
   switch (audience) {
     //Speech Synthesis Markup Language //https://www.w3.org/TR/speech-synthesis/#S3.2.3
     case "me":
       speech =
-        '<speak>Let me tell a ' + mood + typeOfStory + ' only for you' + about + location + audio + ' </speak>';
+        '<speak>' + name + ' will tell a ' + mood + ' ' + typeOfStory + ' only for you' + about + location + audio + ' </speak>';
       break;
     case "us":
       speech =
-        '<speak>Hi you all, Let me tell a ' + mood + typeOfStory + about + location + audio  + ' </speak>';
+        '<speak>Hi you all, ' + name + '  tell a ' + mood + ' ' + typeOfStory + about + location + audio  + ' </speak>';
       break;
     case "family":
       speech =
-        '<speak>Hi family, let me tell a ' + mood + typeOfStory + about + location + audio + ' </speak>';
+        '<speak>Hi family, ' + name + '  tell a ' + mood + ' ' + typeOfStory + about + location + audio + ' </speak>';
       break;
     case "kids":
       speech =
-        '<speak>Hi kids, i will tell a ' + typeOfStory + '' + about + location + audio + '</speak>';
+        '<speak>Hi kids, ' + name + '  will tell a ' + mood + ' ' + typeOfStory + '' + about + location + audio + '</speak>';
       break; 
     case "any":
       speech =
-        '<speak>Hi any, i will tell a ' + mood + typeOfStory + '' + about + location + audio + ' </speak>';
+        '<speak>Hi any, ' + name + ' will tell a ' + mood + ' ' + typeOfStory + '' + about + location + audio + ' </speak>';
       break; 
   }
   return res.json({
@@ -109,12 +109,23 @@ var audio_list = [
   {
     "name":   "Jennifer", 
     "src":    "https://deweirdt.be/tellastory/jennifer.mp3",
-    "mood":   "fun"
+    "mood":   "fun",
+    "lang":   "nl",
+    "gender":   "f"
   },
   {
     "name":   "Astrid", 
     "src":    "https://deweirdt.be/tellastory/astrid.mp3",
-    "mood":   "love"
+    "mood":   "love",
+    "lang":   "nl",
+    "gender":   "f"
+  },
+  {
+    "name":   "Bob", 
+    "src":    "https://deweirdt.be/tellastory/astrid.mp3",
+    "mood":   "love",
+    "lang":   "en",
+    "gender":   "m"
   },
 ];
 
