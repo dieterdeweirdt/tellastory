@@ -65,7 +65,6 @@ restService.post("/story", function(req, res) {
     filtered_list = filterByProperty(filtered_list, 'lang', lang);
   }
 
-
   console.log(filtered_list);
 
   var number_of_stories = filtered_list.length;
@@ -148,8 +147,10 @@ function filterByProperty(array, prop, value){
         var obj = array[i];
 
         for(var key in obj){
+          console.log(typeof(obj[key]);
             if(typeof(obj[key] == "object")){
                 var item = obj[key];
+                console.log(prop + ": " + item[prop] + ' : ' + value);
                 if(item[prop] == value){
                     filtered.push(item);
                 }
