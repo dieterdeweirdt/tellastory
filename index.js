@@ -34,24 +34,30 @@ restService.post("/test", function(req, res) {
 restService.post("/story", function(req, res) {
   var speech = "";
   var audience = "any";
-  var gender = false;
+  var gender = "";
   var typeOfStory = "story";
   var location = "";
   var mood = "";
+  var lang = "";
 
   if(req && req.body && req.body.queryResult && req.body.queryResult.parameters) {
     var params = req.body.queryResult.parameters;
     var audience = (params.Audience) ? params.Audience.toLowerCase() : 'any';
     var gender = (params.Gender) ? params.Gender.toLowerCase() : '';
     var typeOfStory = (params.TypeOfStory) ? params.TypeOfStory.toLowerCase() : 'story';
-    var location = (params.City) ? ' located near ' + params.City.toLowerCase() : '';
+    var location = (params.City) ? params.City.toLowerCase() : '';
     var mood = (params.Mood) ? params.Mood.toLowerCase() : '';
+    var lang = (params.Language) ? params.Language.toLowerCase() : '';
   }
   
   filtered_list = audio_list;
-  
+
   if(gender) {
     filtered_list = filterByProperty(filtered_list, 'gender', gender);
+  }
+
+  if(lang) {
+    filtered_list = filterByProperty(filtered_list, 'lang', lang);
   }
 
   var number_of_stories = audio_list.length;
