@@ -166,7 +166,7 @@ var audio_list = [
   {
     "name":   "Paul", 
     "src":    "https://deweirdt.be/tellastory/janis.mp3",
-    "mood":   "serious",
+    "mood":   "sad",
     "lang":   "en",
     "gender":   "m"
   },
@@ -195,6 +195,13 @@ var audio_list = [
     "name":   "Stijn", 
     "src":    "https://deweirdt.be/tellastory/janis.mp3",
     "mood":   "relaxing",
+    "lang":   "en",
+    "gender":   "m"
+  },
+  {
+    "name":   "Janis", 
+    "src":    "https://deweirdt.be/tellastory/janis_weird.mp3",
+    "mood":   "weird",
     "lang":   "en",
     "gender":   "m"
   },
