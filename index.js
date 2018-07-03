@@ -2,7 +2,6 @@
 
 const express = require("express");
 const bodyParser = require("body-parser");
-const logger = require('heroku-logger')
 
 const restService = express();
 
@@ -56,13 +55,18 @@ restService.post("/story", function(req, res) {
   var filtered_list = audio_list;
 
   if(gender) {
-    logger.info('Filter on gender: ' + gender);
+    console.log('Filter on gender: ' + gender);
     filtered_list = filterByProperty(filtered_list, 'gender', gender);
   }
 
   if(lang) {
-    logger.info('filter on lang: ' + lang);
+    console.log('filter on lang: ' + lang);
     filtered_list = filterByProperty(filtered_list, 'lang', lang);
+  }
+
+  if(mood) {
+    console.log('filter on mood: ' + mood);
+    filtered_list = filterByProperty(filtered_list, 'mood', mood);
   }
 
   console.log(filtered_list);
@@ -127,14 +131,14 @@ var audio_list = [
   {
     "name":   "Astrid", 
     "src":    "https://deweirdt.be/tellastory/astrid.mp3",
-    "mood":   "love",
+    "mood":   "sad",
     "lang":   "nl",
     "gender":   "f"
   },
   {
     "name":   "Bob", 
     "src":    "https://deweirdt.be/tellastory/astrid.mp3",
-    "mood":   "love",
+    "mood":   "fun",
     "lang":   "en",
     "gender":   "m"
   },
