@@ -150,7 +150,8 @@ function filterByProperty(array, prop, value){
             if(typeof(obj[key] == "object")){
                 var item = obj[key];
                 console.log(item);
-                console.log(prop + ": " + item[prop] + ' : ' + value);
+                console.log(key);
+                //console.log(prop + ": " + item[prop] + ' : ' + value);
                 if(item[prop] == value){
                     filtered.push(item);
                 }
