@@ -52,16 +52,16 @@ restService.post("/story", function(req, res) {
     var mood = (params.Mood) ? params.Mood.toLowerCase() : '';
     var lang = (params.Language) ? params.Language.toLowerCase() : '';
   }
-  logger.info('Gender: ' + gender);
-  logger.info('Lang: ' + lang);
 
   var filtered_list = audio_list;
 
   if(gender) {
+    logger.info('Filter on gender: ' + gender);
     filtered_list = filterByProperty(filtered_list, 'gender', gender);
   }
 
   if(lang) {
+    logger.info('filter on lang: ' + lang);
     filtered_list = filterByProperty(filtered_list, 'lang', lang);
   }
 
