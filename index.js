@@ -66,8 +66,7 @@ restService.post("/story", function(req, res) {
   }
 
 
-
-  logger.info(filtered_list);
+  console.log(filtered_list);
 
   var number_of_stories = filtered_list.length;
 
