@@ -54,14 +54,14 @@ restService.post("/story", function(req, res) {
 
   var filtered_list = audio_list;
 
-  if(gender) {
-    console.log('Filter on gender: ' + gender);
-    filtered_list = filterByProperty(filtered_list, 'gender', gender);
-  }
-
   if(lang) {
     console.log('filter on lang: ' + lang);
     filtered_list = filterByProperty(filtered_list, 'lang', lang);
+  }
+
+  if(gender) {
+    console.log('Filter on gender: ' + gender);
+    filtered_list = filterByProperty(filtered_list, 'gender', gender);
   }
 
   if(mood) {
@@ -145,9 +145,9 @@ var audio_list = [
   {
     "name":   "Kath", 
     "src":    "https://deweirdt.be/tellastory/kath.mp3",
-    "mood":   "fun",
+    "mood":   "adventures",
     "lang":   "en",
-    "gender":   "m"
+    "gender":   "f"
   },
 ];
 
