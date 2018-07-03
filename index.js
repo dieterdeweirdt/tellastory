@@ -41,6 +41,7 @@ restService.post("/story", function(req, res) {
   var lang = "";
   var pre_message = '';
 
+
   if(req && req.body && req.body.queryResult && req.body.queryResult.parameters) {
     var params = req.body.queryResult.parameters;
     var audience = (params.Audience) ? params.Audience.toLowerCase() : 'any';
@@ -51,6 +52,9 @@ restService.post("/story", function(req, res) {
     var lang = (params.Language) ? params.Language.toLowerCase() : '';
   }
   
+console.log(gender);
+console.log(lang);
+
   var filtered_list = audio_list;
 
   if(gender) {
@@ -60,6 +64,9 @@ restService.post("/story", function(req, res) {
   if(lang) {
     filtered_list = filterByProperty(filtered_list, 'lang', lang);
   }
+
+
+  console.log(filtered_list);
 
   var number_of_stories = filtered_list.length;
 
