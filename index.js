@@ -61,7 +61,7 @@ restService.post("/story", function(req, res) {
     filtered_list = filterByProperty(filtered_list, 'lang', lang);
   }
 
-  var number_of_stories = audio_list.length;
+  var number_of_stories = filtered_list.length;
 
   if(!number_of_stories) {
     pre_message = "Sorry I didn't find a story matching you search. Let me just get a random one. <break time='1s'/> ";
@@ -104,24 +104,6 @@ restService.post("/story", function(req, res) {
     source: "tell-a-story"
   });
 });
-
-/*
-
-<script src="https://www.gstatic.com/firebasejs/5.2.0/firebase.js"></script>
-<script>
-  // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyDAqay1oi2lcRw5hwJrCRT3ebD4yQM7aYk",
-    authDomain: "tellmeastory-b1e69.firebaseapp.com",
-    databaseURL: "https://tellmeastory-b1e69.firebaseio.com",
-    projectId: "tellmeastory-b1e69",
-    storageBucket: "tellmeastory-b1e69.appspot.com",
-    messagingSenderId: "425190960176"
-  };
-  firebase.initializeApp(config);
-</script>
-
-*/
 
 restService.listen(process.env.PORT || 8000, function() {
   console.log("Server up and listening");
@@ -173,3 +155,22 @@ function filterByProperty(array, prop, value){
 
 }
 
+
+
+/*
+
+<script src="https://www.gstatic.com/firebasejs/5.2.0/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyDAqay1oi2lcRw5hwJrCRT3ebD4yQM7aYk",
+    authDomain: "tellmeastory-b1e69.firebaseapp.com",
+    databaseURL: "https://tellmeastory-b1e69.firebaseio.com",
+    projectId: "tellmeastory-b1e69",
+    storageBucket: "tellmeastory-b1e69.appspot.com",
+    messagingSenderId: "425190960176"
+  };
+  firebase.initializeApp(config);
+</script>
+
+*/
