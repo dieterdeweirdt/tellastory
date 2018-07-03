@@ -2,6 +2,7 @@
 
 const express = require("express");
 const bodyParser = require("body-parser");
+const logger = require('heroku-logger')
 
 const restService = express();
 
@@ -51,9 +52,8 @@ restService.post("/story", function(req, res) {
     var mood = (params.Mood) ? params.Mood.toLowerCase() : '';
     var lang = (params.Language) ? params.Language.toLowerCase() : '';
   }
-  
-console.log(gender);
-console.log(lang);
+  logger.info('Gender: ' + gender);
+  logger.info('Lang: ' + lang);
 
   var filtered_list = audio_list;
 
@@ -66,7 +66,8 @@ console.log(lang);
   }
 
 
-  console.log(filtered_list);
+
+  logger.info(filtered_list);
 
   var number_of_stories = filtered_list.length;
 

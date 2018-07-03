@@ -9,6 +9,7 @@
   "author": "Dieter De Weirdt",
   "dependencies": {
     "body-parser": "^1.15.0",
-    "express": "^4.13.4"
+    "express": "^4.13.4",
+    "heroku-logger": "0.3.1"
   }
 }
