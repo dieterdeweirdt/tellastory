@@ -83,30 +83,30 @@ restService.post("/story", function(req, res) {
 
   var name = filtered_list[x]['name'];
   var audio = ' <break time="1s"/> <audio src="' + filtered_list[x]['src'] +'">Audio failed to load</audio>';
-  
+  var mood_txt = filtered_list[x]['mood'];  
 
 
   switch (audience) {
     //Speech Synthesis Markup Language //https://www.w3.org/TR/speech-synthesis/#S3.2.3
     case "me":
       speech =
-        '<speak>' + pre_message + name + ' will tell a ' + mood + ' ' + typeOfStory + ' only for you'  + location + audio + ' </speak>';
+        '<speak>' + pre_message + name + ' will tell a ' + mood_txt + ' ' + typeOfStory + ' only for you'  + location + audio + ' </speak>';
       break;
     case "us":
       speech =
-        '<speak>' + pre_message + 'Hi you all, ' + name + '  tell a ' + mood + ' ' + typeOfStory  + location + audio  + ' </speak>';
+        '<speak>' + pre_message + 'Hi you all, ' + name + '  tell a ' + mood_txt + ' ' + typeOfStory  + location + audio  + ' </speak>';
       break;
     case "family":
       speech =
-        '<speak>' + pre_message + 'Hi family, ' + name + '  tell a ' + mood + ' ' + typeOfStory  + location + audio + ' </speak>';
+        '<speak>' + pre_message + 'Hi family, ' + name + '  tell a ' + mood_txt + ' ' + typeOfStory  + location + audio + ' </speak>';
       break;
     case "kids":
       speech =
-        '<speak>' + pre_message + 'Hi kids, ' + name + '  will tell a ' + mood + ' ' + typeOfStory  + location + audio + '</speak>';
+        '<speak>' + pre_message + 'Hi kids, ' + name + '  will tell a ' + mood_txt + ' ' + typeOfStory  + location + audio + '</speak>';
       break; 
     case "any":
       speech =
-        '<speak>' + pre_message + 'Hi any, ' + name + ' will tell a ' + mood + ' ' + typeOfStory + location + audio + ' </speak>';
+        '<speak>' + pre_message + 'Hi any, ' + name + ' will tell a ' + mood_txt + ' ' + typeOfStory + location + audio + ' </speak>';
       break; 
   }
   return res.json({
@@ -136,8 +136,15 @@ var audio_list = [
     "gender":   "f"
   },
   {
-    "name":   "Bob", 
-    "src":    "https://deweirdt.be/tellastory/astrid.mp3",
+    "name":   "Janis", 
+    "src":    "https://deweirdt.be/tellastory/janis.mp3",
+    "mood":   "relaxing",
+    "lang":   "en",
+    "gender":   "m"
+  },
+  {
+    "name":   "Kath", 
+    "src":    "https://deweirdt.be/tellastory/kath.mp3",
     "mood":   "fun",
     "lang":   "en",
     "gender":   "m"
