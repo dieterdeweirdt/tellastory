@@ -94,11 +94,11 @@ restService.post("/story", function(req, res) {
       break;
     case "us":
       speech =
-        '<speak>' + pre_message + 'Hi you all, ' + name + '  tell a ' + mood_txt + ' ' + typeOfStory  + location + audio  + ' </speak>';
+        '<speak>' + pre_message + 'Hi you all, ' + name + ' will tell a ' + mood_txt + ' ' + typeOfStory  + location + audio  + ' </speak>';
       break;
     case "family":
       speech =
-        '<speak>' + pre_message + 'Hi family, ' + name + '  tell a ' + mood_txt + ' ' + typeOfStory  + location + audio + ' </speak>';
+        '<speak>' + pre_message + 'Hi family, ' + name + ' will tell a ' + mood_txt + ' ' + typeOfStory  + location + audio + ' </speak>';
       break;
     case "kids":
       speech =
@@ -148,6 +148,55 @@ var audio_list = [
     "mood":   "adventures",
     "lang":   "en",
     "gender":   "f"
+  },
+  {
+    "name":   "John", 
+    "src":    "https://deweirdt.be/tellastory/janis.mp3",
+    "mood":   "love",
+    "lang":   "en",
+    "gender":   "m"
+  },
+  {
+    "name":   "Mia", 
+    "src":    "https://deweirdt.be/tellastory/astrid.mp3",
+    "mood":   "love",
+    "lang":   "en",
+    "gender":   "f"
+  },
+  {
+    "name":   "Paul", 
+    "src":    "https://deweirdt.be/tellastory/janis.mp3",
+    "mood":   "serious",
+    "lang":   "en",
+    "gender":   "m"
+  },
+  {
+    "name":   "Eva", 
+    "src":    "https://deweirdt.be/tellastory/kath.mp3",
+    "mood":   "adventures",
+    "lang":   "en",
+    "gender":   "f"
+  },
+  {
+    "name":   "Sandra", 
+    "src":    "https://deweirdt.be/tellastory/jennifer.mp3",
+    "mood":   "fun",
+    "lang":   "en",
+    "gender":   "f"
+  },
+  {
+    "name":   "Dieter", 
+    "src":    "https://deweirdt.be/tellastory/janis.mp3",
+    "mood":   "relaxing",
+    "lang":   "en",
+    "gender":   "m"
+  },
+  {
+    "name":   "Stijn", 
+    "src":    "https://deweirdt.be/tellastory/janis.mp3",
+    "mood":   "relaxing",
+    "lang":   "en",
+    "gender":   "m"
   },
 ];
 
