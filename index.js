@@ -147,7 +147,7 @@ function filterByProperty(array, prop, value){
         var obj = array[i];
 
         for(var key in obj){
-          console.log(typeof(obj[key]);
+          console.log(typeof(obj[key]));
             if(typeof(obj[key] == "object")){
                 var item = obj[key];
                 console.log(prop + ": " + item[prop] + ' : ' + value);
