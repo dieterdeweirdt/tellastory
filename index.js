@@ -39,6 +39,7 @@ restService.post("/story", function(req, res) {
   var location = "";
   var mood = "";
   var lang = "";
+  var pre_message = '';
 
   if(req && req.body && req.body.queryResult && req.body.queryResult.parameters) {
     var params = req.body.queryResult.parameters;
@@ -50,7 +51,7 @@ restService.post("/story", function(req, res) {
     var lang = (params.Language) ? params.Language.toLowerCase() : '';
   }
   
-  filtered_list = audio_list;
+  var filtered_list = audio_list;
 
   if(gender) {
     filtered_list = filterByProperty(filtered_list, 'gender', gender);
@@ -61,32 +62,41 @@ restService.post("/story", function(req, res) {
   }
 
   var number_of_stories = audio_list.length;
+
+  if(!number_of_stories) {
+    pre_message = "Sorry I didn't find a story matching you search. Let me just get a random one. <break time='1s'/> ";
+    filtered_list = audio_list;
+    number_of_stories = audio_list.length;
+  }
+
   var x = Math.floor((Math.random() * number_of_stories));
 
-  var name = audio_list[x]['name'];
-  var audio = ' <break time="1s"/> <audio src="' + audio_list[x]['src'] +'">Audio failed to load</audio>';
+  var name = filtered_list[x]['name'];
+  var audio = ' <break time="1s"/> <audio src="' + filtered_list[x]['src'] +'">Audio failed to load</audio>';
+  
+
 
   switch (audience) {
     //Speech Synthesis Markup Language //https://www.w3.org/TR/speech-synthesis/#S3.2.3
     case "me":
       speech =
-        '<speak>' + name + ' will tell a ' + mood + ' ' + typeOfStory + ' only for you'  + location + audio + ' </speak>';
+        '<speak>' + pre_message + name + ' will tell a ' + mood + ' ' + typeOfStory + ' only for you'  + location + audio + ' </speak>';
       break;
     case "us":
       speech =
-        '<speak>Hi you all, ' + name + '  tell a ' + mood + ' ' + typeOfStory  + location + audio  + ' </speak>';
+        '<speak>' + pre_message + 'Hi you all, ' + name + '  tell a ' + mood + ' ' + typeOfStory  + location + audio  + ' </speak>';
       break;
     case "family":
       speech =
-        '<speak>Hi family, ' + name + '  tell a ' + mood + ' ' + typeOfStory  + location + audio + ' </speak>';
+        '<speak>' + pre_message + 'Hi family, ' + name + '  tell a ' + mood + ' ' + typeOfStory  + location + audio + ' </speak>';
       break;
     case "kids":
       speech =
-        '<speak>Hi kids, ' + name + '  will tell a ' + mood + ' ' + typeOfStory  + location + audio + '</speak>';
+        '<speak>' + pre_message + 'Hi kids, ' + name + '  will tell a ' + mood + ' ' + typeOfStory  + location + audio + '</speak>';
       break; 
     case "any":
       speech =
-        '<speak>Hi any, ' + name + ' will tell a ' + mood + ' ' + typeOfStory + location + audio + ' </speak>';
+        '<speak>' + pre_message + 'Hi any, ' + name + ' will tell a ' + mood + ' ' + typeOfStory + location + audio + ' </speak>';
       break; 
   }
   return res.json({
