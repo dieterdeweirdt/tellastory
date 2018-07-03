@@ -34,7 +34,7 @@ restService.post("/test", function(req, res) {
 restService.post("/story", function(req, res) {
   var speech = "";
   var audience = "any";
-  var about = "";
+  var gender = false;
   var typeOfStory = "story";
   var location = "";
   var mood = "";
@@ -42,14 +42,21 @@ restService.post("/story", function(req, res) {
   if(req && req.body && req.body.queryResult && req.body.queryResult.parameters) {
     var params = req.body.queryResult.parameters;
     var audience = (params.Audience) ? params.Audience.toLowerCase() : 'any';
-    var about = (params.Gender) ? ' about a ' + params.Gender.toLowerCase() : '';
+    var gender = (params.Gender) ? params.Gender.toLowerCase() : '';
     var typeOfStory = (params.TypeOfStory) ? params.TypeOfStory.toLowerCase() : 'story';
     var location = (params.City) ? ' located near ' + params.City.toLowerCase() : '';
     var mood = (params.Mood) ? params.Mood.toLowerCase() : '';
   }
   
+  filtered_list = audio_list;
+  
+  if(gender) {
+    filtered_list = filterByProperty(filtered_list, 'gender', gender);
+  }
+
   var number_of_stories = audio_list.length;
   var x = Math.floor((Math.random() * number_of_stories));
+
   var name = audio_list[x]['name'];
   var audio = ' <break time="1s"/> <audio src="' + audio_list[x]['src'] +'">Audio failed to load</audio>';
 
@@ -57,23 +64,23 @@ restService.post("/story", function(req, res) {
     //Speech Synthesis Markup Language //https://www.w3.org/TR/speech-synthesis/#S3.2.3
     case "me":
       speech =
-        '<speak>' + name + ' will tell a ' + mood + ' ' + typeOfStory + ' only for you' + about + location + audio + ' </speak>';
+        '<speak>' + name + ' will tell a ' + mood + ' ' + typeOfStory + ' only for you'  + location + audio + ' </speak>';
       break;
     case "us":
       speech =
-        '<speak>Hi you all, ' + name + '  tell a ' + mood + ' ' + typeOfStory + about + location + audio  + ' </speak>';
+        '<speak>Hi you all, ' + name + '  tell a ' + mood + ' ' + typeOfStory  + location + audio  + ' </speak>';
       break;
     case "family":
       speech =
-        '<speak>Hi family, ' + name + '  tell a ' + mood + ' ' + typeOfStory + about + location + audio + ' </speak>';
+        '<speak>Hi family, ' + name + '  tell a ' + mood + ' ' + typeOfStory  + location + audio + ' </speak>';
       break;
     case "kids":
       speech =
-        '<speak>Hi kids, ' + name + '  will tell a ' + mood + ' ' + typeOfStory + '' + about + location + audio + '</speak>';
+        '<speak>Hi kids, ' + name + '  will tell a ' + mood + ' ' + typeOfStory  + location + audio + '</speak>';
       break; 
     case "any":
       speech =
-        '<speak>Hi any, ' + name + ' will tell a ' + mood + ' ' + typeOfStory + '' + about + location + audio + ' </speak>';
+        '<speak>Hi any, ' + name + ' will tell a ' + mood + ' ' + typeOfStory + location + audio + ' </speak>';
       break; 
   }
   return res.json({
