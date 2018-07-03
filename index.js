@@ -205,6 +205,13 @@ var audio_list = [
     "lang":   "en",
     "gender":   "m"
   },
+  {
+    "name":   "Nick", 
+    "src":    "https://deweirdt.be/tellastory/nick.mp3",
+    "mood":   "fun",
+    "lang":   "nl",
+    "gender":   "m"
+  },
 ];
 
 function filterByProperty(array, prop, value){
