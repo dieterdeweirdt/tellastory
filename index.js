@@ -50,23 +50,23 @@ restService.post("/story", function(req, res) {
     //Speech Synthesis Markup Language //https://www.w3.org/TR/speech-synthesis/#S3.2.3
     case "me":
       speech =
-        '<speak>Let me tell a ' + typeOfStory + ' only for you' + about + location + '</speak>';
+        '<speak>Let me tell a ' + typeOfStory + ' only for you' + about + location + ' <audio src="https://tell-story.herokuapp.com/audio/jennifer.mp3"></audio></speak>';
       break;
     case "us":
       speech =
-        '<speak>Hi you all, Let me tell a ' + typeOfStory  + about + location + '</speak>';
+        '<speak>Hi you all, Let me tell a ' + typeOfStory  + about + location + ' <audio src="https://tell-story.herokuapp.com/audio/astrid.mp3"></audio></speak>';
       break;
     case "family":
       speech =
-        '<speak>Hi family, let me tell a ' + typeOfStory + about + location + '</speak>';
+        '<speak>Hi family, let me tell a ' + typeOfStory + about + location + ' <audio src="https://tell-story.herokuapp.com/audio/jennifer.mp3"></audio></speak>';
       break;
     case "kids":
       speech =
-        '<speak><audio src="http://www.music.helsinki.fi/tmt/opetus/uusmedia/esim/a2002011001-e02-96k.ogg"></audio> Hi kids, i will tell a ' + typeOfStory + '' + about + location + '</speak>';
+        '<speak>Hi kids, i will tell a ' + typeOfStory + '' + about + location + '</speak>';
       break; 
     case "any":
       speech =
-        '<speak>Hi any, i will tell a ' + typeOfStory + '' + about + location + '</speak>';
+        '<speak>Hi any, i will tell a ' + typeOfStory + '' + about + location + ' <audio src="https://tell-story.herokuapp.com/audio/astrid.mp3"></audio></speak>';
       break; 
   }
   return res.json({
