@@ -82,7 +82,7 @@ restService.post("/story", function(req, res) {
   var x = Math.floor((Math.random() * number_of_stories));
 
   var name = filtered_list[x]['name'];
-  var audio = ' <break time="1s"/> <audio src="' + filtered_list[x]['src'] +'" soundLevel="+12">Audio failed to load</audio>';
+  var audio = ' <break time="1s"/> <audio src="' + filtered_list[x]['src'] +'" soundLevel="+12dB">Audio failed to load</audio>';
   var mood_txt = filtered_list[x]['mood'];  
 
 
