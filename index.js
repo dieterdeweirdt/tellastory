@@ -171,13 +171,6 @@ var audio_list = [
     "gender":   "m"
   },
   {
-    "name":   "Eva", 
-    "src":    "https://deweirdt.be/tellastory/kath.mp3",
-    "mood":   "adventures",
-    "lang":   "en",
-    "gender":   "f"
-  },
-  {
     "name":   "Sandra", 
     "src":    "https://deweirdt.be/tellastory/jennifer.mp3",
     "mood":   "fun",
