@@ -94,7 +94,7 @@ restService.post("/story", function(req, res) {
       break;
     case "us":
       speech =
-        '<speak>' + pre_message + 'Hi you all, ' + name + ' will tell a ' + mood_txt + ' ' + typeOfStory  + location + audio  + ' </speak>';
+        '<speak>' + pre_message + 'Hi If Labbers, ' + name + ' will tell a ' + mood_txt + ' ' + typeOfStory  + location + audio  + ' </speak>';
       break;
     case "family":
       speech =
